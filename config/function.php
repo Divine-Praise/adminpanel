@@ -100,7 +100,7 @@
 
                 $row = mysqli_fetch_assoc($result);
                 $response = [
-                    'status' => 404,
+                    'status' => 200,
                     'data' => $row,
                     'message' => 'Record Found'
                 ];
@@ -137,7 +137,38 @@
 
     }
 
+    function checkParamId($type){
 
+        if(isset($_GET[$type])){
+
+            if($_GET[$type] != ''){
+
+                return $_GET[$type];
+
+            }else{
+                return '<h5>No Id Given</h5>';
+            }
+
+        }else{
+            return '<h5>No Id Given</h5>';
+        }
+
+    }
+
+    function logoutSession(){
+        unset($_SESSION['loggedIn']);
+        unset($_SESSION['loggedInUser']);
+    }
+
+    function jsonResponse($status, $status_type, $message){
+        $response = [
+            'status' => $status,
+            'status_type' => $status_type,
+            'message' => $message
+        ];
+        echo json_encode($response);
+        return;
+    }
 
 ?>
 
