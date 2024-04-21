@@ -5,6 +5,7 @@
         <div class="card-header">
             <h4 class="mb-0">Order View</h4>
             <a href="orders.php" class="btn btn-danger mx-2 btn-sm float-end">Back</a>
+            <a href="orders-view-print.php?track=<?= $_GET['track']; ?>" class="btn btn-info mx-2 btn-sm float-end">Print</a>
         </div>
         <div class="card-body">
             <?php alertMessage(); ?>
@@ -131,7 +132,7 @@
 
                                                 <tr>
                                                     <td class="text-end fw-bold">Total Price: </td>
-                                                    <td colspan="3" class="text-end fw-bold">$: <?= number_format($orderItemRow['total_amount'], 0); ?></td>
+                                                    <td colspan="3" class="text-end fw-bold">$<?= number_format($orderItemRow['total_amount'], 0); ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>

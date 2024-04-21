@@ -14,8 +14,8 @@ if(!isset($_SESSION['productItems'])){
             <h5 id="orderPlaceSuccessMessage"></h5>
         </div>
         <a href="orders.php" class="btn btn-secondary">Close</a>
-        <button type="button" class="btn btn-danger">Print</button>
-        <button type="button" class="btn btn-warning">Download PDF</button>
+        <button type="button" class="btn btn-danger" onclick="printMyBillingArea()">Print</button>
+        <button type="button" class="btn btn-warning" onclick="downloadPDF('<?= $_SESSION['invoice_no']; ?>')">Download PDF</button>
 
       </div>
     </div>
@@ -95,7 +95,7 @@ if(!isset($_SESSION['productItems'])){
                                             <th align="start" style="border-bottom: 1px solid #ccc;">Product Name</th>
                                             <th align="start" style="border-bottom: 1px solid #ccc;" width="10%">Price</th>
                                             <th align="start" style="border-bottom: 1px solid #ccc;" width="10%">Quantity</th>
-                                            <th align="start" style="border-bottom: 1px solid #ccc;" width="15%">Total Price</th>
+                                            <th align="start" style="border-bottom: 1px solid #ccc;" width="15%">Total Price($)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -140,6 +140,10 @@ if(!isset($_SESSION['productItems'])){
                     <?php if(isset($_SESSION['productItems'])) : ?>
                         <div class="mt-4 text-end">
                             <button type="button" class="btn btn-primary px-4 mx-1" id="saveOrder">Save</button>
+                            <button class="btn btn-info px-4 mx-1" onclick="printMyBillingArea()">Print</button>
+                            <button class="btn btn-warning px-4 mx-1" onclick="downloadPDF('<?= $_SESSION['invoice_no']; ?>')">
+                                Download PDF
+                            </button>
                         </div>
                     <?php endif; ?>
                 </div>
